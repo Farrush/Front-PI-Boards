@@ -7,7 +7,20 @@
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
-          "style": "scss"
+          "style": "scss",
+          "standalone": false,
+          "inlineStyle": false,
+          "inlineTemplate": false,
+          "skipTests": true
+        },
+        "@schematics/angular:directive": {
+          "standalone": false
+        },
+        "@schematics/angular:pipe": {
+          "standalone": false
+        },
+        "@schematics/angular:service": {
+          "skipTests": true
         }
       },
       "root": "",
@@ -32,7 +45,7 @@
               }
             ],
             "styles": [
-              "src/styles.scss"
+              "src/global.scss"
             ],
             "scripts": [],
             "server": "src/main.server.ts",
@@ -103,5 +116,8 @@
         }
       }
     }
+  },
+  "cli": {
+    "analytics": false
   }
 }

@@ -1,0 +1,61 @@
+@font-face {
+    font-family: 'roboto-thin', sans-serif;
+    src: url('/public/assets/fonts/roboto/Roboto-Thin.ttf');
+    font-weight: 100;
+}
+@font-face {
+    font-family: 'roboto-light', sans-serif;
+    src: url('/public/assets/fonts/roboto/Roboto-Light.ttf');
+    font-weight: 300;
+}
+@font-face {
+    font-family: 'roboto-Regular', sans-serif;
+    src: url('/public/assets/fonts/roboto/Roboto-Regular.ttf');
+    font-weight: 400;
+}
+@font-face {
+    font-family: 'roboto-medium', sans-serif;
+    src: url('/public/assets/fonts/roboto/Roboto-Medium.ttf');
+    font-weight: 500;
+}
+@font-face {
+    font-family: 'roboto-bold', sans-serif;
+    src: url('/public/assets/fonts/roboto/Roboto-Bold.ttf');
+    font-weight: 700;
+}
+@font-face {
+    font-family: 'roboto-black', sans-serif;
+    src: url('/public/assets/fonts/roboto/Roboto-Black.ttf');
+    font-weight: 900;
+}
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+a{
+    text-decoration: none;
+}
+
+.thin{
+    font-family: 'roboto-thin', sans-serif;
+}
+.light{
+    font-family: 'roboto-light', sans-serif;
+}
+.regular{
+    font-family: 'roboto-regular', sans-serif;
+}
+.medium{
+    font-family: 'roboto-medium', sans-serif;
+}
+.bold{
+    font-family: 'roboto-bold', sans-serif;
+}
+.black{
+    font-family: 'roboto-black', sans-serif;
+}
+
+body{
+    font-family: 'roboto-regular', sans-serif;
+}
