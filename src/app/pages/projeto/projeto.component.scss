@@ -1,0 +1,121 @@
+.projeto-main{
+   
+
+    .cabecalho{
+        padding: 4px;
+        display: flex;
+        justify-content: space-between;
+        height: 50px;
+        background-color: #80878F;
+        .botoes{
+            display: flex;
+            height: 100%;
+            align-items: center;
+            gap: 4px;
+            .botao{
+                font-family: 'roboto', sans-serif;
+                font-weight: 500;
+                font-size: 18px;
+                background-color: #EB742A;
+                color: #fff;
+                border-radius: 4px;
+                box-shadow: 0 2px 6px #0002;
+                height: 100%;
+                &-perfil{
+                    background-color: #ffa770;
+                    color: #FFF;
+                    aspect-ratio: 1/1;
+                    height: 100%;
+                    border-radius: 50%;
+                }
+            }
+        }
+    }
+    main{
+        padding: 24px;
+        .main-top-bar{
+            display: flex;
+            gap: 8px;
+            align-items: center;
+            height: 40px;
+            .titulo-projeto{
+                color:#EB742A;
+                font: 500 30px 'roboto', sans-serif;
+                margin: 0;
+            }
+            .botoes{
+                display: flex;
+                height: 100%;
+                align-items: center;
+                gap: 4px;
+                .botao{
+                    font-family: 'roboto', sans-serif;
+                    font-weight: 500;
+                    font-size: 18px;
+                    background-color: #EB742A;
+                    color: #fff;
+                    border-radius: 4px;
+                    box-shadow: 0 2px 6px #0002;
+                    height: 100%;
+                    width: 100px;
+                }
+            }
+        }
+        .board{
+            width: 95vw;
+            height: 76vh;
+            margin: 16px auto 0px;
+            display: flex;
+            flex-wrap: nowrap;
+            overflow-x: auto;
+            gap: 16px;
+            border: 1px #0001;
+            border-style: groove;
+            .lista{
+                z-index: 5;
+                width: 24%;
+                min-width: 22vw;
+                max-height: 100%;
+                overflow-y: auto;
+                display: flex;
+                flex-direction: column;
+                gap: 6px;
+                padding: 8px;
+                .titulo{
+                    text-align: center;
+                    font: 600 22px 'roboto', sans-serif;
+                    color: #40506C;
+                }
+
+                .tarefa{
+                    z-index: 10;
+                    background-color: #fff;
+                    box-shadow: 0 2px 10px #0007;
+                    border-radius: 8px;
+                    width: 100%;
+                    padding: 16px;
+                    .barra-prioridade{
+                        height: 8px;
+                        width: 80%;
+                        margin-right: auto;
+                        background-color: #CECECE;
+                        border-radius: 4px;
+                        margin-bottom: 8px;
+                    }
+                    .objetivo{
+                        font: 400 16px 'roboto';
+                        margin-bottom: 8px;
+                    }
+                    .btn-prazo{
+                        font: 500 16px 'roboto';
+                        padding: 8px;
+                        height: 40px;
+                        background-color: #f57c6c;
+                        color: #fff;
+                    }
+                }
+
+            }
+        }
+    }
+}
