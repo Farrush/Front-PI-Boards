@@ -1,12 +1,12 @@
 .projeto-main{
-   
+   background-color: var(--cinza);
 
     .cabecalho{
         padding: 4px;
         display: flex;
         justify-content: space-between;
         height: 50px;
-        background-color: #80878F;
+        background-color: var(--cinza-escuro);
         .botoes{
             display: flex;
             height: 100%;
@@ -16,13 +16,13 @@
                 font-family: 'roboto', sans-serif;
                 font-weight: 500;
                 font-size: 18px;
-                background-color: #EB742A;
+                background-color: var(--azul);
                 color: #fff;
                 border-radius: 4px;
                 box-shadow: 0 2px 6px #0002;
                 height: 100%;
                 &-perfil{
-                    background-color: #ffa770;
+                    background-color: #9ab8ff;
                     color: #FFF;
                     aspect-ratio: 1/1;
                     height: 100%;
@@ -39,7 +39,7 @@
             align-items: center;
             height: 40px;
             .titulo-projeto{
-                color:#EB742A;
+                color:var(--azul);
                 font: 500 30px 'roboto', sans-serif;
                 margin: 0;
             }
@@ -52,7 +52,7 @@
                     font-family: 'roboto', sans-serif;
                     font-weight: 500;
                     font-size: 18px;
-                    background-color: #EB742A;
+                    background-color: var(--azul);
                     color: #fff;
                     border-radius: 4px;
                     box-shadow: 0 2px 6px #0002;

@@ -36,133 +36,31 @@
                 <button mat-fab class="botao">Convite</button>
             </div>
         </div>
-        <div class="board">
-            <div class="lista">
-                <h1 class="titulo">Lista 1</h1>
-                <div class="tarefa" cdkDragBoundary=".board" cdkDrag>
-                    <div class="barra-prioridade">
+        <div class="board" cdkDropListGroup>
+ 
+                <div  
+                    *ngFor="let lista of listas; track: lista"
+                    class="lista"
+                    [id]="lista.id+'' || '0'"
+                    cdkDropList
+                    [cdkDropListData]="tarefas.get(lista.id? lista.id:0)"
+                    (cdkDropListDropped)="trocarListaDaTarefa($event)"
+                    >
+                    <h1 class="titulo">{{lista.titulo}}</h1>
+                        <div *ngFor="let tarefa of tarefas.get(lista.id? lista.id:0); track tarefa" 
+                        class="tarefa" 
+                        cdkDrag 
+                        [cdkDragData]="tarefa">
+                            <div class="barra-prioridade">
+                            </div>
+                            <p class="objetivo">{{tarefa.objetivo}}</p>
+                            <button *ngIf="tarefa.prazo != null" mat-fab extended class="btn-prazo">{{tarefa.prazo}}</button>
+                        
                     </div>
-                    <p class="objetivo">Tarefa 1</p>
-                    <button mat-fab extended class="btn-prazo">30/10/2024</button>
+                    
                 </div>
-                <div class="tarefa" cdkDragBoundary=".board" cdkDrag>
-                    <div class="barra-prioridade">
-                    </div>
-                    <p class="objetivo">Tarefa 2</p>
-                    <button mat-fab extended class="btn-prazo">30/10/2024</button>
-                </div>
-            </div>
-            <div class="lista">
-                <h1 class="titulo">Lista 2</h1>
-                <div class="tarefa" cdkDragBoundary=".board" cdkDrag>
-                    <div class="barra-prioridade">
-                    </div>
-                    <p class="objetivo">Tarefa 1</p>
-                    <button mat-fab extended class="btn-prazo">30/10/2024</button>
-                </div>
-                <div class="tarefa" cdkDragBoundary=".board" cdkDrag>
-                    <div class="barra-prioridade">
-                    </div>
-                    <p class="objetivo">Tarefa 2</p>
-                    <button mat-fab extended class="btn-prazo">30/10/2024</button>
-                </div>
-            </div>
-            <div class="lista">
-                <h1 class="titulo">Lista 3</h1>
-                <div class="tarefa" cdkDragBoundary=".board" cdkDrag>
-                    <div class="barra-prioridade">
-                    </div>
-                    <p class="objetivo">Tarefa 1</p>
-                    <button mat-fab extended class="btn-prazo">30/10/2024</button>
-                </div>
-                <div class="tarefa" cdkDragBoundary=".board" cdkDrag>
-                    <div class="barra-prioridade">
-                    </div>
-                    <p class="objetivo">Tarefa 2</p>
-                    <button mat-fab extended class="btn-prazo">30/10/2024</button>
-                </div>
-                <div class="tarefa" cdkDragBoundary=".board" cdkDrag>
-                    <div class="barra-prioridade">
-                    </div>
-                    <p class="objetivo">Tarefa 3</p>
-                    <button mat-fab extended class="btn-prazo">30/10/2024</button>
-                </div>
-                <div class="tarefa" cdkDragBoundary=".board" cdkDrag>
-                    <div class="barra-prioridade">
-                    </div>
-                    <p class="objetivo">Tarefa 4</p>
-                    <button mat-fab extended class="btn-prazo">30/10/2024</button>
-                </div>
-                <div class="tarefa" cdkDragBoundary=".board" cdkDrag>
-                    <div class="barra-prioridade">
-                    </div>
-                    <p class="objetivo">Tarefa 5</p>
-                    <button mat-fab extended class="btn-prazo">30/10/2024</button>
-                </div>
-            </div>
-            <div class="lista">
-                <h1 class="titulo">Lista 4</h1>
-                <div class="tarefa" cdkDragBoundary=".board" cdkDrag>
-                    <div class="barra-prioridade">
-                    </div>
-                    <p class="objetivo">Tarefa 1</p>
-                    <button mat-fab extended class="btn-prazo">30/10/2024</button>
-                </div>
-                <div class="tarefa" cdkDragBoundary=".board" cdkDrag>
-                    <div class="barra-prioridade">
-                    </div>
-                    <p class="objetivo">Tarefa 2</p>
-                    <button mat-fab extended class="btn-prazo">30/10/2024</button>
-                </div>
-            </div>
-            <div class="lista">
-                <h1 class="titulo">Lista 5</h1>
-                <div class="tarefa" cdkDragBoundary=".board" cdkDrag>
-                    <div class="barra-prioridade">
-                    </div>
-                    <p class="objetivo">Tarefa 1</p>
-                    <button mat-fab extended class="btn-prazo">30/10/2024</button>
-                </div>
-                <div class="tarefa" cdkDragBoundary=".board" cdkDrag>
-                    <div class="barra-prioridade">
-                    </div>
-                    <p class="objetivo">Tarefa 2</p>
-                    <button mat-fab extended class="btn-prazo">30/10/2024</button>
-                </div>
-            </div>
-            <div class="lista">
-                <h1 class="titulo">Lista 6</h1>
-                <div class="tarefa" cdkDragBoundary=".board" cdkDrag>
-                    <div class="barra-prioridade">
-                    </div>
-                    <p class="objetivo">Tarefa 1</p>
-                    <button mat-fab extended class="btn-prazo">30/10/2024</button>
-                </div>
-                <div class="tarefa" cdkDragBoundary=".board" cdkDrag>
-                    <div class="barra-prioridade">
-                    </div>
-                    <p class="objetivo">Tarefa 2</p>
-                    <button mat-fab extended class="btn-prazo">30/10/2024</button>
-                </div>
-                <div class="tarefa" cdkDragBoundary=".board" cdkDrag>
-                    <div class="barra-prioridade">
-                    </div>
-                    <p class="objetivo">Tarefa 3</p>
-                    <button mat-fab extended class="btn-prazo">30/10/2024</button>
-                </div>
-                <div class="tarefa" cdkDragBoundary=".board" cdkDrag>
-                    <div class="barra-prioridade">
-                    </div>
-                    <p class="objetivo">Tarefa 4</p>
-                    <button mat-fab extended class="btn-prazo">30/10/2024</button>
-                </div>
-                <div class="tarefa" cdkDragBoundary=".board" cdkDrag>
-                    <div class="barra-prioridade">
-                    </div>
-                    <p class="objetivo">Tarefa 5</p>
-                    <button mat-fab extended class="btn-prazo">30/10/2024</button>
-                </div>
-            </div>
+            
+            
         </div>
     </main>
 </div>
