@@ -20,6 +20,27 @@ export class ProjetoComponent implements OnInit {
 
   }
   ngOnInit(): void {
+    /*
+    this.tarefas.set(1, [{
+      id: 1,
+      objetivo: 'Programar Typescript',
+      idCriador: 1,
+      idResponsavel: 0,
+      idLista: 1,
+      prazo: new Date,
+      dataCriacao: new Date,
+
+    }])
+    this.tarefas.set(2, [{
+      id: 2,
+      objetivo: 'Programar Java',
+      idCriador: 1,
+      idResponsavel: 0,
+      idLista: 2,
+      prazo: new Date,
+      dataCriacao: new Date,
+
+    }])*/
     this.buscarListas()
     this.buscarTarefas()
   }
@@ -37,10 +58,21 @@ export class ProjetoComponent implements OnInit {
         })
     })
   }
-  trocarListaDaTarefa(event: CdkDragDrop<Tarefa[], Tarefa[], Tarefa>) {
+  trocarListaDaTarefa(event: CdkDragDrop<Tarefa[] | undefined, any, any>) {
     console.log("dragged",event.container)
 
   }
-  listas: Lista[] = []
+  listas: Lista[] = [
+    /*{
+      id: 1,
+      titulo: 'Lista Legal',
+      idProjeto: 1
+  },
+  {
+    id: 2,
+    titulo: 'Lista chata',
+    idProjeto: 1
+}*/
+  ]
   tarefas: Map<number, Tarefa[]> = new Map()
 }

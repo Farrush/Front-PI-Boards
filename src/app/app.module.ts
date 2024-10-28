@@ -6,15 +6,23 @@ import { AppComponent } from './app.component';
 import { HttpClientModule } from '@angular/common/http';
 import { RouterOutlet } from '@angular/router';
 import { ProjetoComponent } from './pages/projeto/projeto.component';
-import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 import {MatIconModule} from '@angular/material/icon';
 import {MatButtonModule} from '@angular/material/button';
 import {DragDropModule} from '@angular/cdk/drag-drop';
+import { LoginComponent } from './pages/login/login.component';
+import { CadastroComponent } from './pages/cadastro/cadastro.component';
+import { EsqueceuComponent } from './pages/esqueceu/esqueceu.component';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { FormsModule } from '@angular/forms';
+import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 
 @NgModule({
   declarations: [
     AppComponent,
-    ProjetoComponent
+    ProjetoComponent,
+    LoginComponent,
+    CadastroComponent,
+    EsqueceuComponent
   ],
   imports: [
     BrowserModule,
@@ -23,7 +31,9 @@ import {DragDropModule} from '@angular/cdk/drag-drop';
     RouterOutlet,
     MatIconModule,
     MatButtonModule,
-    DragDropModule
+    DragDropModule,
+    MatToolbarModule,
+    FormsModule
   ],
   providers: [
     provideClientHydration(),

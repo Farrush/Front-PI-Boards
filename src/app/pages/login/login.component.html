@@ -1,0 +1,37 @@
+<div class="wrapper">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap">
+        <link rel="stylesheet" href="https://unpkg.com/boxicons@latest/css/boxicons.min.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+        <main class="login-box">
+            <header class="login-header">
+                <img src="assets/img/logo.svg" alt="logo">
+            </header>
+            <section class="input-box">
+                <input type="text" id="user" class="input-field" name="user" ngModel required>
+                <label for="user" class="label">Username</label>
+                <i class="bx bx-user icon"></i>
+            </section>
+            <section class="input-box">
+                <input type="{{ isPasswordVisible ? 'text' : 'password' }}" id="pass" class="input-field" name="pass" ngModel autocomplete="off">
+                <label for="pass" class="label">Password</label>
+                <i class="bx bx-lock-alt icon" id="show-password" (click)="togglePasswordVisibility()"></i>
+            </section>
+            <section class="remember-forgot">
+                <div class="remember-me">
+                    <input type="checkbox" id="remember" ngModel>
+                    <label for="remember" class="remember-name">Remember me</label>
+                </div>
+                <div class="forgot">
+                    <a href="/esqueceu">Forgot password</a>
+                </div>
+            </section>
+            <section class="input-box">
+                <input type="submit" class="input-submit" value="Login">
+            </section>
+            <section class="register">
+                <span>Ainda não se registrou?
+                    <a routerLink="/cadastro">Register</a>
+                </span>
+            </section>
+        </main>
+    </div>
