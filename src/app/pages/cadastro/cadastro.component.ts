@@ -8,7 +8,6 @@ import { Component } from '@angular/core';
 export class CadastroComponent {
   user: string = '';
   email: string = '';
-  tel: string = '';
   pass: string = '';
   confirmPass: string = '';
   isPasswordVisible: boolean = false;
@@ -22,7 +21,7 @@ export class CadastroComponent {
   }
 
   isFormValid(): boolean {
-    if (!this.user || !this.email || !this.tel || !this.pass) {
+    if (!this.user || !this.email || !this.pass) {
       alert('Por favor, preencha todos os campos.');
       return false;
     }

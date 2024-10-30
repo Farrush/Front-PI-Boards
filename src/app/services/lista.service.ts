@@ -23,9 +23,9 @@ export class ListaService {
     const url = `${this.url}/projeto/${idProjeto}`
     return this.http.get<Lista[]>(url);
   }
-  cadastrar(idProjeto: number, lista: Lista): Observable<void>{
+  cadastrar(idProjeto: number, lista: Lista): Observable<Lista>{
     const url = `${this.url}/projeto/${idProjeto}`
-    return this.http.post<void>(url, lista)
+    return this.http.post<Lista>(url, lista)
   }
   atualizar(lista: Lista): Observable<void>{
     const url = `${this.url}/${lista.id}`

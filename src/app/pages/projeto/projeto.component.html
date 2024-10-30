@@ -28,7 +28,7 @@
     <main>
         <div class="main-top-bar">
             <h1 class="titulo-projeto">
-                Main Board
+                {{projeto.titulo}}
             </h1>
             <div class="botoes">
                 <button mat-fab class="botao">Privado</button>
@@ -46,7 +46,21 @@
                     [cdkDropListData]="tarefas.get(lista.id? lista.id:0)"
                     (cdkDropListDropped)="trocarListaDaTarefa($event)"
                     >
-                    <h1 class="titulo">{{lista.titulo}}</h1>
+                    <div class="container-titulo">
+                        <h1 class="titulo">{{lista.titulo}}
+                        </h1>
+                        <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu"><mat-icon>more_vert</mat-icon></button>
+                        <mat-menu #menu="matMenu">
+                            <button (click)="apagarLista(lista)" mat-menu-item>
+                              <mat-icon>delete</mat-icon>
+                              <span>Excluir</span>
+                            </button>
+                            <button mat-menu-item disabled>
+                              <mat-icon>edit</mat-icon>
+                              <span>Editar</span>
+                            </button>
+                          </mat-menu>
+                    </div>
                         <div *ngFor="let tarefa of tarefas.get(lista.id? lista.id:0); track tarefa" 
                         class="tarefa" 
                         cdkDrag 
@@ -57,7 +71,18 @@
                             <button *ngIf="tarefa.prazo != null" mat-fab extended class="btn-prazo">{{tarefa.prazo}}</button>
                         
                     </div>
+                    <div class="nova-tarefa">
+                        <button mat-fab extended>
+                            <mat-icon>task</mat-icon>
+                            Nova Tarefa
+                        </button>
+                    </div>
                     
+                </div>
+                <div class="nova-lista">
+                    <h1>Criar Nova Lista</h1>
+                    <input [(ngModel)]="novaLista.titulo" type="text" placeholder="Título">
+                    <button (click)="adicionarNovaLista()" mat-fab>Criar</button>
                 </div>
             
             

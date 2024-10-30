@@ -1,4 +1,4 @@
-@font-face {
+/*@font-face {
     font-family: 'roboto';
     src: url('../public/assets/fonts/roboto/Roboto-Thin.ttf');
 
@@ -22,12 +22,8 @@
     font-family: 'roboto';
     src: url('../public/assets/fonts/roboto/Roboto-Bold.ttf');
 
-}
-@font-face {
-    font-family: 'roboto';
-    src: url('../public/assets/fonts/roboto/Roboto-Black.ttf');
-
-}
+}*/
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap');
 :root{
     --azul: #328ABD;
     --cinza-escuro: #80878F;

@@ -6,15 +6,18 @@ import { AppComponent } from './app.component';
 import { HttpClientModule } from '@angular/common/http';
 import { RouterOutlet } from '@angular/router';
 import { ProjetoComponent } from './pages/projeto/projeto.component';
-import {MatIconModule} from '@angular/material/icon';
-import {MatButtonModule} from '@angular/material/button';
-import {DragDropModule} from '@angular/cdk/drag-drop';
 import { LoginComponent } from './pages/login/login.component';
 import { CadastroComponent } from './pages/cadastro/cadastro.component';
 import { EsqueceuComponent } from './pages/esqueceu/esqueceu.component';
+import {MatIconModule} from '@angular/material/icon';
+import {MatButtonModule} from '@angular/material/button';
+import {DragDropModule} from '@angular/cdk/drag-drop';
 import { MatToolbarModule } from '@angular/material/toolbar';
+import {MatMenuModule} from '@angular/material/menu';
 import { FormsModule } from '@angular/forms';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
+import { TarefaComponent } from './components/tarefa/tarefa.component';
+import { FormTarefaComponent } from './components/form-tarefa/form-tarefa.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +25,9 @@ import { provideAnimationsAsync } from '@angular/platform-browser/animations/asy
     ProjetoComponent,
     LoginComponent,
     CadastroComponent,
-    EsqueceuComponent
+    EsqueceuComponent,
+    TarefaComponent,
+    FormTarefaComponent
   ],
   imports: [
     BrowserModule,
@@ -33,7 +38,8 @@ import { provideAnimationsAsync } from '@angular/platform-browser/animations/asy
     MatButtonModule,
     DragDropModule,
     MatToolbarModule,
-    FormsModule
+    FormsModule,
+    MatMenuModule
   ],
   providers: [
     provideClientHydration(),

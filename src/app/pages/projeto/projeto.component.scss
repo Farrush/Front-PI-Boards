@@ -71,7 +71,41 @@
             gap: 16px;
             border: 1px #0001;
             border-style: groove;
+            .nova-lista{
+                width: 24%;
+                min-width: 22vw;
+                max-height: 100%;
+                display: flex;
+                flex-direction: column;
+                gap: 6px;
+                padding: 8px;
+                h1{
+                    text-align: center;
+                    font: 600 22px 'roboto', sans-serif;
+                    color: #40506C;
+                }
+                input{
+                    font-family: 'roboto', sans-serif;
+                    font-weight: 300;
+                    font-size: 20px;
+                    padding: 4px;
+                }
+                button{
+                    font-family: 'roboto', sans-serif;
+                    font-weight: 500;
+                    font-size: 18px;
+                    background-color: var(--azul);
+                    color: #fff;
+                    border-radius: 4px;
+                    box-shadow: 0 2px 6px #0002;
+                    height: 40px;
+                    width: 100px;
+                    align-self: center;
+                }
+            }
             .lista{
+                position: relative;
+                background-color: #fffe;
                 z-index: 5;
                 width: 24%;
                 min-width: 22vw;
@@ -81,12 +115,40 @@
                 flex-direction: column;
                 gap: 6px;
                 padding: 8px;
-                .titulo{
-                    text-align: center;
-                    font: 600 22px 'roboto', sans-serif;
-                    color: #40506C;
+                .container-titulo{
+                    display: flex;
+                    justify-content: space-between;
+                    align-items: center;
+                    .titulo{
+                        text-align: left;
+                        font: 400 20px 'roboto', sans-serif;
+                        color: #58606f;
+                    }
                 }
+                .nova-tarefa{
+                    position: absolute;
+                    bottom: 0;
+                    left: 0;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    height: 60px;
+                    width: 100%;
 
+                    button{
+                        font-family: 'roboto', sans-serif;
+                        font-weight: 300;
+                        font-size: 16px;
+                        background-color: transparent;
+                        border: 1px #0002;
+                        border-style: groove;
+                        color: #111;
+                        border-radius: 4px;
+                        box-shadow: 0 2px 6px #0002;
+                        height: 40px;
+                        width: 160px;
+                    }
+                }
                 .tarefa{
                     z-index: 10;
                     background-color: #fff;
