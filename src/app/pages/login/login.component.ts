@@ -1,18 +1,34 @@
 import { Component } from '@angular/core';
-
+import { UsuarioService } from '../../services/usuario.service';
+import { Usuario } from '../../entities/Usuario';
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss']
 })
 export class LoginComponent {
-  user: string = '';
+  email: string = '';
   pass: string = '';
   isPasswordVisible: boolean = false;
 
+  constructor(private service: UsuarioService,  private router: Router){
+
+  }
   onSubmit() {
-    console.log('Username:', this.user);
-    console.log('Password:', this.pass);
+    if(this.email && this.pass)
+      this.service.login({email: this.email, senha: this.pass})
+      .subscribe((res) => {
+        if(res.id != undefined)
+          localStorage.setItem('iduser', res.id.toString())
+        this.router.navigate(['/projeto'])
+      },
+      (err)=> {
+        if(err.status == 401)
+          alert("Email ou senha incorretos.")
+      })
+    else
+      alert("Insira email e senha.")
   }
 
   togglePasswordVisibility() {

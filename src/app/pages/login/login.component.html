@@ -7,26 +7,22 @@
                 <img src="assets/img/logo.svg" alt="logo">
             </header>
             <section class="input-box">
-                <input type="text" id="user" class="input-field" name="user" ngModel required>
-                <label for="user" class="label">Username</label>
+                <input type="email" id="email" class="input-field" name="email" [(ngModel)]="email" required>
+                <label for="email" class="label">Email</label>
                 <i class="bx bx-user icon"></i>
             </section>
             <section class="input-box">
-                <input type="{{ isPasswordVisible ? 'text' : 'password' }}" id="pass" class="input-field" name="pass" ngModel autocomplete="off">
-                <label for="pass" class="label">Password</label>
+                <input type="{{ isPasswordVisible ? 'text' : 'password' }}" [(ngModel)]="pass" id="pass" class="input-field" name="pass" autocomplete="off">
+                <label for="pass" class="label">Senha</label>
                 <i class="bx bx-lock-alt icon" id="show-password" (click)="togglePasswordVisibility()"></i>
             </section>
-            <section class="remember-forgot">
-                <div class="remember-me">
-                    <input type="checkbox" id="remember" ngModel>
-                    <label for="remember" class="remember-name">Remember me</label>
-                </div>
+            <section class="forgot-container">
                 <div class="forgot">
-                    <a href="/esqueceu">Forgot password</a>
+                    <a routerLink="/esqueceu">Esqueci a Senha</a>
                 </div>
             </section>
             <section class="input-box">
-                <input type="submit" class="input-submit" value="Login">
+                <input type="submit" class="input-submit" value="Login" (click)="onSubmit()">
             </section>
             <section class="register">
                 <span>Ainda não se registrou?

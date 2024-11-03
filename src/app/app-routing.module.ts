@@ -7,11 +7,12 @@ import { EsqueceuComponent } from './pages/esqueceu/esqueceu.component';
 
 
 const routes: Routes = [
-  {path: '', component: ProjetoComponent},
+  //{path: '', component: ProjetoComponent},
   { path: 'login', component: LoginComponent },
   { path: 'cadastro', component: CadastroComponent},
   { path: 'esqueceu', component: EsqueceuComponent},
-  //{ path: '', redirectTo: '/login', pathMatch: 'full' },
+  { path: 'projeto', component: ProjetoComponent},
+  { path: '', redirectTo: '/login', pathMatch: 'full' },
   //{ path: '**', redirectTo: '/login' }
 
 ];

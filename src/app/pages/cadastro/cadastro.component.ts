@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { UsuarioService } from '../../services/usuario.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-cadastro',
@@ -12,26 +14,32 @@ export class CadastroComponent {
   confirmPass: string = '';
   isPasswordVisible: boolean = false;
   isConfirmPasswordVisible: boolean = false;
+  constructor(private service: UsuarioService,  private router: Router){
 
+  }
   onSubmit() {
-    if (this.isFormValid()) {
-      alert('Registro bem-sucedido!');
-      //lógica para enviar os dados ao servidor.
+    if (this.isFormValid() && this.isPasswordEqual()) {
+      this.service.cadastrar({nome: this.user, email: this.email, senha: this.pass, dataCadastro:new Date().toISOString().split('.')[0]})
+        .subscribe((res) => {
+          this.router.navigate(['/login'])
+        }, (err) => {
+
+          if(err.error.cause.cause.message.includes('Duplicate entry')){
+
+            alert("Email já foi cadastrado")
+          }
+          else
+            alert("Erro ao tentar cadastrar.")
+        })
+      
     }
   }
 
   isFormValid(): boolean {
-    if (!this.user || !this.email || !this.pass) {
-      alert('Por favor, preencha todos os campos.');
-      return false;
-    }
-
-    if (this.pass !== this.confirmPass) {
-      alert('As senhas não coincidem.');
-      return false;
-    }
-
-    return true;
+    return (this.pass != '' && this.email != '' && this.user != '')
+  }
+  isPasswordEqual(): boolean{
+    return (this.pass === this.confirmPass)
   }
 
   togglePasswordVisibility() {
