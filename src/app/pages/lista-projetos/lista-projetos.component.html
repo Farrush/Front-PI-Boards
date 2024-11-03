@@ -1,0 +1,17 @@
+<div class="page-lista-projetos">
+    <app-cabecalho></app-cabecalho>
+    <main>
+        <h1>Meus Projetos</h1>
+        <div class="projetos">
+            <div class="projeto"  *ngFor="let projeto of projetos; track: projeto">
+                <h3>{{projeto.titulo}}</h3>
+            </div>
+        </div>
+        <h1>Membro</h1>
+        <div class="projetos">
+            <div class="projeto"  *ngFor="let projetoP of projetosP; track: projetoP">
+                <h3>{{projetoP.titulo}}</h3>
+            </div>
+        </div>
+    </main>
+</div>

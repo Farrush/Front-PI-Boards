@@ -18,6 +18,8 @@ import { FormsModule } from '@angular/forms';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 import { TarefaComponent } from './components/tarefa/tarefa.component';
 import { FormTarefaComponent } from './components/form-tarefa/form-tarefa.component';
+import { ListaProjetosComponent } from './pages/lista-projetos/lista-projetos.component';
+import { CabecalhoComponent } from './components/cabecalho/cabecalho.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +29,9 @@ import { FormTarefaComponent } from './components/form-tarefa/form-tarefa.compon
     CadastroComponent,
     EsqueceuComponent,
     TarefaComponent,
-    FormTarefaComponent
+    FormTarefaComponent,
+    ListaProjetosComponent,
+    CabecalhoComponent
   ],
   imports: [
     BrowserModule,

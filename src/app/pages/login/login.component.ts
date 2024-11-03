@@ -21,7 +21,7 @@ export class LoginComponent {
       .subscribe((res) => {
         if(res.id != undefined)
           localStorage.setItem('iduser', res.id.toString())
-        this.router.navigate(['/projeto'])
+        this.router.navigate(['/projetos'])
       },
       (err)=> {
         if(err.status == 401)
