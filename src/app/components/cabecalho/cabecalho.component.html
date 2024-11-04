@@ -8,11 +8,12 @@
         </button>
         <button (click)="irParaListaProjetos()" mat-fab extended class="botao">
             <mat-icon>developer_board</mat-icon>
-            Boards
+            Projetos
         </button>
     </div>
     <div class="botoes">
-        <button mat-fab class="botao">
+        <button (click)="emitNovoProjeto()" *ngIf="currentUrl != '/projeto'" mat-fab extended class="botao">
+            Novo Projeto
             <mat-icon>add</mat-icon>
         </button>
         <button mat-fab class="botao">

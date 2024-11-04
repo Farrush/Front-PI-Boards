@@ -1,5 +1,5 @@
 <div class="page-lista-projetos">
-    <app-cabecalho></app-cabecalho>
+    <app-cabecalho (novoProjeto)="abrirNovoProjeto()"></app-cabecalho>
     <main>
         <h1>Meus Projetos</h1>
         <div class="projetos">
@@ -14,4 +14,5 @@
             </div>
         </div>
     </main>
+    <app-form-projeto (criarProjeto)="addProjetoALista($event)" *ngIf="showFormNewProject"></app-form-projeto>
 </div>

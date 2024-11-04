@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Output, EventEmitter } from '@angular/core';
 import { Router } from '@angular/router';
 
 @Component({
@@ -8,11 +8,18 @@ import { Router } from '@angular/router';
 })
 export class CabecalhoComponent {
   constructor(private router: Router){
-
+    this.currentUrl = this.router.url
   }
+  currentUrl: string = ''
   irParaListaProjetos(): void{
-    if(this.router.url != '/projetos'){
+    if(this.currentUrl != '/projetos'){
       this.router.navigate(['/projetos'])
     }
+  }
+  
+  
+  @Output("novoProjeto") novoProjeto = new EventEmitter<undefined>()
+  emitNovoProjeto (){
+    this.novoProjeto.emit()
   }
 }

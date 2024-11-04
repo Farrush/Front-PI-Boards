@@ -11,6 +11,7 @@ export class ListaProjetosComponent implements OnInit{
   idUsuario = localStorage.getItem('iduser')
   projetos: Projeto[] = []
   projetosP: Projeto[] = []
+  showFormNewProject = false
   constructor(private projService: ProjetoService){
 
   }
@@ -31,4 +32,15 @@ export class ListaProjetosComponent implements OnInit{
     })
   }
 
+  abrirNovoProjeto(): void{
+    this.showFormNewProject = true
+  }
+  addProjetoALista(projeto: Projeto | null){
+    if(projeto == null)
+      alert("Erro ao adicionar novo projeto")
+    else{
+      this.showFormNewProject = false
+      this.projetos.push(projeto)
+    }
+  }
 }

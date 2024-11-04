@@ -20,6 +20,7 @@ import { TarefaComponent } from './components/tarefa/tarefa.component';
 import { FormTarefaComponent } from './components/form-tarefa/form-tarefa.component';
 import { ListaProjetosComponent } from './pages/lista-projetos/lista-projetos.component';
 import { CabecalhoComponent } from './components/cabecalho/cabecalho.component';
+import { FormProjetoComponent } from './components/form-projeto/form-projeto.component';
 
 @NgModule({
   declarations: [
@@ -31,7 +32,8 @@ import { CabecalhoComponent } from './components/cabecalho/cabecalho.component';
     TarefaComponent,
     FormTarefaComponent,
     ListaProjetosComponent,
-    CabecalhoComponent
+    CabecalhoComponent,
+    FormProjetoComponent
   ],
   imports: [
     BrowserModule,

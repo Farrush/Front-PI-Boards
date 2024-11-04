@@ -1,7 +1,7 @@
 export interface Projeto {
     id?: number,
     titulo: string,
-    dataCriacao?: Date,
-    dataAlteracao?: Date,
+    dataCriacao?: string,
+    dataAlteracao?: string,
     idCriador?: number
 }
