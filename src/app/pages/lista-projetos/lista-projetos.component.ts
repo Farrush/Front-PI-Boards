@@ -47,4 +47,13 @@ export class ListaProjetosComponent implements OnInit{
   verProjeto(id: number): void{
     this.router.navigate(['/projeto'],{state: {id}})
   }
+  apagarProjeto(projeto: Projeto): void{
+    this.projService.deletar(projeto.id as unknown as number)
+    .subscribe(() => {
+      if(projeto.id){
+        this.projetos = this.projetos.filter(p => p.id !== projeto.id)
+
+      }
+    })
+  }
 }

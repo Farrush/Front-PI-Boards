@@ -3,14 +3,34 @@
     <main>
         <h1>Meus Projetos</h1>
         <div class="projetos">
-            <div (click)="verProjeto(projeto.id || 0)" class="projeto"  *ngFor="let projeto of projetos; track: projeto">
+            <div class="projeto" *ngFor="let projeto of projetos; track: projeto">
+                <div (click)="verProjeto(projeto.id || 0)" class="proj">
                 <h3>{{projeto.titulo}}</h3>
+                
+                </div>
+                <div class="btn-menu">
+                    <button class="btn-mat-menu" mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu"><mat-icon>more_vert</mat-icon></button>
+                    <mat-menu #menu="matMenu">
+                        <button (click)="apagarProjeto(projeto)" mat-menu-item>
+                            <mat-icon>delete</mat-icon>
+                            <span>Excluir</span>
+                        </button>
+                        <button mat-menu-item disabled>
+                            <mat-icon>edit</mat-icon>
+                            <span>Editar</span>
+                        </button>
+                    </mat-menu>
+                </div>
             </div>
         </div>
         <h1>Membro</h1>
         <div class="projetos">
-            <div (click)="verProjeto(projetoP.id || 0)" class="projeto"  *ngFor="let projetoP of projetosP; track: projetoP">
+            <div class="projeto" *ngFor="let projetoP of projetosP; track: projetoP">
+                <div (click)="verProjeto(projetoP.id || 0)" class="proj">
                 <h3>{{projetoP.titulo}}</h3>
+                
+                </div>
+                
             </div>
         </div>
     </main>
