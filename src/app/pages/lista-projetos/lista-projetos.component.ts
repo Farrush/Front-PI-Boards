@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ProjetoService } from '../../services/projeto.service';
 import { Projeto } from '../../entities/Projeto';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-lista-projetos',
@@ -12,7 +13,7 @@ export class ListaProjetosComponent implements OnInit{
   projetos: Projeto[] = []
   projetosP: Projeto[] = []
   showFormNewProject = false
-  constructor(private projService: ProjetoService){
+  constructor(private projService: ProjetoService, private router: Router){
 
   }
   ngOnInit(): void {
@@ -42,5 +43,8 @@ export class ListaProjetosComponent implements OnInit{
       this.showFormNewProject = false
       this.projetos.push(projeto)
     }
+  }
+  verProjeto(id: number): void{
+    this.router.navigate(['/projeto'],{state: {id}})
   }
 }

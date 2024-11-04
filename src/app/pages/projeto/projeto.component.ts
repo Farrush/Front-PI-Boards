@@ -9,6 +9,7 @@ import {
   transferArrayItem,
 } from '@angular/cdk/drag-drop';
 import { Projeto } from '../../entities/Projeto';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-projeto',
@@ -16,20 +17,26 @@ import { Projeto } from '../../entities/Projeto';
   styleUrl: './projeto.component.scss'
 })
 export class ProjetoComponent implements OnInit {
-  idProjeto = 1
+  idProjeto = 0
   projeto: Projeto = {
     titulo: ''
   }
   novaLista: Lista = {
     titulo: ''
   }
-  constructor(private projService: ProjetoService, private listService: ListaService, private tarefaService: TarefaService) {
+  constructor(private router: Router ,private projService: ProjetoService, private listService: ListaService, private tarefaService: TarefaService) {
 
   }
   ngOnInit(): void {
-    this.buscarProjeto()
-    this.buscarListas()
-    this.buscarTarefas()
+    this.idProjeto = this.router.lastSuccessfulNavigation?.extras?.state?.["id"]
+    if(this.idProjeto != undefined){
+      this.buscarProjeto()
+      this.buscarListas()
+      this.buscarTarefas()
+    }
+    else{
+      this.router.navigate(['/projetos'])
+    }
   }
   buscarProjeto(): void{
     this.projService.findById(this.idProjeto)
