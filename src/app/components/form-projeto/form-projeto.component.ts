@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Output } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { ProjetoService } from '../../services/projeto.service';
 import { Projeto } from '../../entities/Projeto';
 
@@ -10,13 +10,15 @@ import { Projeto } from '../../entities/Projeto';
 export class FormProjetoComponent {
 
   constructor(private service: ProjetoService){
-
+    
   }
+  @Input() proj: Projeto | null = null
+  @Input() oldTitle: string = ''
   titulo = ''
   @Output("criarProjeto") criarProjeto = new EventEmitter<Projeto | null>()
   criar(): void{
     this.service.cadastrar(localStorage.getItem('iduser') as unknown as number, {
-      titulo: this.titulo, 
+      titulo: this.titulo.trim(), 
       dataCriacao: new Date().toISOString().split('.')[0], 
       dataAlteracao: new Date().toISOString().split('.')[0]
     })
@@ -26,8 +28,27 @@ export class FormProjetoComponent {
       },
       (err)=>{
         this.criarProjeto.emit(null)
+      },
+      () => {
+
+        this.titulo = ''
       }
     )
-    this.titulo = ''
+  }
+  @Output("alterarProjeto") alterarProjeto = new EventEmitter<Projeto | null>()
+  alterar(): void{
+    this.service.alterar(this.proj?.id as number, {...this.proj, titulo: this.proj?.titulo.trim()} as Projeto)
+      .subscribe(
+        (res)=>{
+          this.alterarProjeto.emit(res)
+        },
+        (err)=>{
+          this.alterarProjeto.emit(null)
+        },
+        ()=>{
+
+          this.proj = null
+        }
+      )
   }
 }

@@ -13,6 +13,7 @@ export class ListaProjetosComponent implements OnInit{
   projetos: Projeto[] = []
   projetosP: Projeto[] = []
   showFormNewProject = false
+  projAlterando: Projeto | null = null
   constructor(private projService: ProjetoService, private router: Router){
 
   }
@@ -40,9 +41,9 @@ export class ListaProjetosComponent implements OnInit{
     if(projeto == null)
       alert("Erro ao adicionar novo projeto")
     else{
-      this.showFormNewProject = false
       this.projetos.push(projeto)
     }
+    this.showFormNewProject = false
   }
   verProjeto(id: number): void{
     this.router.navigate(['/projeto'],{state: {id}})
@@ -55,5 +56,18 @@ export class ListaProjetosComponent implements OnInit{
 
       }
     })
+  }
+  alterarProjeto(projeto: Projeto | null){
+    if(projeto == null){
+      alert("Erro ao alterar projeto")
+    }else{
+      this.projetos[this.projetos.findIndex((p, index) => p.id === projeto.id)] = projeto
+    }
+    this.projAlterando = null
+  }
+  abrirAlteracao(projeto: Projeto | null){
+    if(projeto)
+      this.projAlterando = {...projeto} as Projeto 
+
   }
 }
