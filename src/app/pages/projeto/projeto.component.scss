@@ -97,7 +97,8 @@
                     }
                 }
                 .nova-tarefa{
-                    position: absolute;
+                    z-index: 8;
+                    position: sticky;
                     bottom: 0;
                     left: 0;
                     display: flex;
@@ -108,9 +109,9 @@
 
                     button{
                         font-family: 'roboto', sans-serif;
-                        font-weight: 300;
+                        font-weight: 400;
                         font-size: 16px;
-                        background-color: transparent;
+                        background-color: #ffffffbb;
                         border: 1px #0002;
                         border-style: groove;
                         color: #111;
@@ -121,7 +122,7 @@
                     }
                 }
                 .tarefa{
-                    z-index: 10;
+                    z-index: 6;
                     background-color: #fff;
                     box-shadow: 0 2px 10px #0007;
                     border-radius: 8px;

@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { UsuarioService } from '../../services/usuario.service';
 import { Usuario } from '../../entities/Usuario';
 import { Router } from '@angular/router';
@@ -7,13 +7,17 @@ import { Router } from '@angular/router';
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss']
 })
-export class LoginComponent {
+export class LoginComponent implements OnInit{
   email: string = '';
   pass: string = '';
   isPasswordVisible: boolean = false;
 
   constructor(private service: UsuarioService,  private router: Router){
 
+  }
+  ngOnInit(): void {
+    if(localStorage.getItem('iduser') !== undefined)
+      this.router.navigate(['/projetos'])
   }
   onSubmit() {
     if(this.email && this.pass)

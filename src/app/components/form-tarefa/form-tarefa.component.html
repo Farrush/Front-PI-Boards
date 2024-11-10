@@ -1,1 +1,20 @@
-<p>form-tarefa works!</p>
+<div class="background-block">
+    <div class="form-tarefa">
+        <h1>Nova Tarefa</h1>
+        <section class="prioridade">
+            <label>Prioridade: </label><button mat-flat-button>Selecionar</button>
+        </section>
+        <section class="input-box">
+            <input type="text" placeholder="Objetivo" class="input-field" [(ngModel)]="objetivo">
+        </section>
+        <section class="input-box">
+            <label>Prazo: </label><input type="date" class="input-field" [(ngModel)]="prazo">
+        </section>
+        <section class="input-box">
+            <button mat-flat-button (click)="cadastrarTarefa()">Criar</button>
+        </section>
+        <mat-icon class="btn-fechar" (click)="this.criarTarefa.emit(null)">
+            close
+        </mat-icon>
+    </div>
+</div>

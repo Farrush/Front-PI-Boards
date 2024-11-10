@@ -1,5 +1,5 @@
 .background-block{
-    z-index: 200;
+    z-index: 10;
     position: absolute;
     top: 0;
     left: 0;
@@ -12,6 +12,7 @@
     font-family: 'roboto', sans-serif;
     overflow-x: hidden;
     .form-projeto{
+        z-index: 11;
         display: flex;
         flex-direction: column;
         gap: 20px;

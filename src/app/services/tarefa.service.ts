@@ -23,13 +23,13 @@ export class TarefaService {
     const url = `${this.url}/lista/${idLista}`
     return this.http.get<Tarefa[]>(url);
   }
-  cadastrar(idLista: number, idCriador: number, tarefa: Tarefa): Observable<void>{
+  cadastrar(idLista: number, idCriador: number, tarefa: Tarefa): Observable<Tarefa>{
     const url = `${this.url}/lista/${idLista}/criador/${idCriador}`
-    return this.http.post<void>(url, tarefa)
+    return this.http.post<Tarefa>(url, tarefa)
   }
-  atualizar(tarefa: Tarefa): Observable<void>{
+  atualizar(tarefa: Tarefa): Observable<Tarefa>{
     const url = `${this.url}/${tarefa.id}`
-    return this.http.put<void>(url, tarefa)
+    return this.http.put<Tarefa>(url, tarefa)
   }
   atualizarListaDaTarefa(idLista: number, idTarefa: number) : Observable<void>{
     const url = `${this.url}/${idTarefa}/lista/${idLista}`

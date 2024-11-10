@@ -39,15 +39,15 @@
                         <div *ngFor="let tarefa of tarefas.get(lista.id? lista.id:0); track tarefa" 
                         class="tarefa" 
                         cdkDrag 
-                        [cdkDragData]="tarefa">
+                        [cdkDragData]="tarefa" (click)="abrirTarefa(tarefa)">
                             <div class="barra-prioridade">
                             </div>
                             <p class="objetivo">{{tarefa.objetivo}}</p>
-                            <button *ngIf="tarefa.prazo != null" mat-fab extended class="btn-prazo">{{tarefa.prazo}}</button>
+                            <button *ngIf="tarefa.prazo != null" mat-fab extended class="btn-prazo">{{trataData(tarefa.prazo)}}</button>
                         
                     </div>
                     <div class="nova-tarefa">
-                        <button mat-fab extended>
+                        <button (click)="abrirFormNovaTarefa(lista.id? lista.id : 0)" mat-fab extended>
                             <mat-icon>task</mat-icon>
                             Nova Tarefa
                         </button>
@@ -63,4 +63,6 @@
             
         </div>
     </main>
+    <app-tarefa [tarefa]="tarefaSelec" *ngIf="tarefaSelec !== null" (closeAndEmitId)="apagarTarefa($event)" (close)="tarefaSelec = null"></app-tarefa>
+    <app-form-tarefa (criarTarefa)="fecharFormTarefa($event)" *ngIf="idLista > 0" [idLista]="idLista"></app-form-tarefa>
 </div>

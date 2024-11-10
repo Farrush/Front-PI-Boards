@@ -1,1 +1,10 @@
-<p>tarefa works!</p>
+<div class="background-block">
+    <div class="card-tarefa">
+        <h1>{{tarefa?.objetivo}}</h1>
+        <h2>Prazo: {{tarefa?.prazo}}</h2>
+        <button mat-flat-button (click)="excluir()">Excluir</button>
+        <mat-icon (click)="this.close.emit()" class="btn-fechar">
+            close
+        </mat-icon>
+    </div>
+</div>

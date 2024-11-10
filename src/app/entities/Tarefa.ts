@@ -6,8 +6,8 @@ export interface Tarefa{
     idCriador?: number,
     idResponsavel?: number,
     idLista: number,
-    tagPrioridade?: Prioridade,
-    prazo?: Date,
-    dataCriacao?: Date,
-    dataAlteracao?: Date
+    tagPrioridade?: Prioridade | null,
+    prazo?: string,
+    dataCriacao?: string,
+    dataAlteracao?: string
 }

@@ -17,13 +17,18 @@ import { Router } from '@angular/router';
   styleUrl: './projeto.component.scss'
 })
 export class ProjetoComponent implements OnInit {
+
   idProjeto = 0
+  idLista: number = 0
+  listas: Lista[] = []
+  tarefas: Map<number, Tarefa[]> = new Map()
   projeto: Projeto = {
     titulo: ''
   }
   novaLista: Lista = {
     titulo: ''
   }
+  tarefaSelec: Tarefa | null = null
   constructor(private router: Router ,private projService: ProjetoService, private listService: ListaService, private tarefaService: TarefaService) {
 
   }
@@ -32,7 +37,7 @@ export class ProjetoComponent implements OnInit {
     if(this.idProjeto != undefined){
       this.buscarProjeto()
       this.buscarListas()
-      this.buscarTarefas()
+      //this.buscarTarefas()
     }
     else{
       this.router.navigate(['/projetos'])
@@ -48,14 +53,14 @@ export class ProjetoComponent implements OnInit {
     this.listService.findAllByProjeto(this.idProjeto)
       .subscribe((res) => {
         this.listas = res
-      })
+      },(err) => {}, () => this.buscarTarefas())
   }
   buscarTarefas(): void {
     this.listas.forEach(lista => {
       this.tarefaService.findAllByLista(lista.id as number)
         .subscribe((tarefas) => {
           this.tarefas.set(lista.id as number, tarefas.filter(tarefa => tarefa.idLista === lista.id as number))
-        })
+        }, (err) => console.log(err))
     })
   }
   trocarListaDaTarefa(event: CdkDragDrop<Tarefa[] | undefined, any, Tarefa>) {
@@ -91,6 +96,23 @@ export class ProjetoComponent implements OnInit {
       }
     })
   }
-  listas: Lista[] = []
-  tarefas: Map<number, Tarefa[]> = new Map()
+  abrirFormNovaTarefa(idLista: number){
+    this.idLista = idLista
+  }
+  fecharFormTarefa(tarefa: Tarefa | null){
+    if(tarefa !== null)
+      this.tarefas.get(this.idLista)?.push(tarefa)
+    this.idLista = 0
+  }
+  trataData(data: any): string{
+    return new Date(data).toLocaleDateString()
+  }
+  abrirTarefa(tarefa: Tarefa){
+    this.tarefaSelec = tarefa
+  }
+  apagarTarefa(id: number) {
+    let listaT = this.tarefas.get(this.tarefaSelec?.idLista as number)
+    this.tarefas.set(this.tarefaSelec?.idLista as number, listaT?.filter(t => t.id !== id) as Tarefa[])
+    this.tarefaSelec = null
+  }
 }
