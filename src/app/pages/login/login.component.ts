@@ -16,7 +16,7 @@ export class LoginComponent implements OnInit{
 
   }
   ngOnInit(): void {
-    if(localStorage.getItem('iduser') !== undefined)
+    if(localStorage.getItem('iduser') !== null)
       this.router.navigate(['/projetos'])
   }
   onSubmit() {
