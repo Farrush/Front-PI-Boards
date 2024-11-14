@@ -2,7 +2,7 @@
     padding: 4px;
     display: flex;
     justify-content: space-between;
-    height: 50px;
+    height: 6vh;
     background-color: var(--cinza-escuro);
     .botoes{
         display: flex;
@@ -12,17 +12,23 @@
         .botao{
             font-family: 'roboto', sans-serif;
             font-weight: 500;
-            font-size: 18px;
+            font-size: 1.2vw;
             background-color: var(--azul);
             color: #fff;
             border-radius: 4px;
             box-shadow: 0 2px 6px #0002;
             height: 100%;
+            span{
+                height: 100%;
+                .mat-icon{
+                   font-size: .8vw;
+                }
+            }
             &-perfil{
                 background-color: #9ab8ff;
                 color: #FFF;
-                aspect-ratio: 1/1;
                 height: 100%;
+                aspect-ratio: 1/1;
                 border-radius: 50%;
             }
         }

@@ -26,15 +26,19 @@ export class FormTarefaComponent {
       dataAlteracao: new Date().toISOString().split('.')[0],
       idLista: this.idLista as number
     }
-    this.tarefaService.cadastrar(this.idLista as number, Number(localStorage.getItem('iduser')), novaTarefa)
-    .subscribe(
-      (res) => {
-        this.criarTarefa.emit(res)
-      },
-      (err)=>{
-        this.criarTarefa.emit(null)
-      }
-    )
+    if(this.objetivo != '')
+      this.tarefaService.cadastrar(this.idLista as number, Number(localStorage.getItem('iduser')), novaTarefa)
+      .subscribe(
+        (res) => {
+          this.criarTarefa.emit(res)
+        },
+        (err)=>{
+          this.criarTarefa.emit(null)
+        }
+      )
+    else{
+      alert("Insira um Objetivo")
+    }
   }
 
 }

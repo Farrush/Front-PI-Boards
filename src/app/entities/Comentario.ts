@@ -4,6 +4,6 @@ export interface Comentario{
     id?: number
     conteudo: string,
     idTarefa?: number,
-    comentadoEm: Date,
+    comentadoEm: string,
     criador?: Usuario
 }

@@ -1,10 +1,27 @@
 <div class="background-block">
     <div class="card-tarefa">
-        <h1>{{tarefa?.objetivo}}</h1>
-        <h2>Prazo: {{tarefa?.prazo}}</h2>
-        <button mat-flat-button (click)="excluir()">Excluir</button>
+        <div class="linha">
+            <h2>{{tarefa?.objetivo}}</h2>
+        </div>
+        <div class="linha">
+            <h2>Prazo: {{tarefa?.prazo != null? trataData(tarefa?.prazo) : 'Indefinido'}}</h2>
+        </div>
+        <button mat-flat-button class="btn-excluir" (click)="excluir()">Excluir</button>
+
+        <section class="box-comentarios">
+            <div class="comentar">
+                <input type="text" placeholder="Comentário" [(ngModel)]="comentario.conteudo"/>
+                <button mat-flat-button (click)="inserirComentario()">Comentar</button>
+            </div>
+            <div class="comentarios">
+                <h4 *ngFor="let com of comentarios; track: com">{{com.criador?.nome}}: {{com.conteudo}}</h4>
+            </div>
+        </section>
+
+
         <mat-icon (click)="this.close.emit()" class="btn-fechar">
             close
         </mat-icon>
+        <p class="datas">Última alteração: {{trataData(tarefa?.dataAlteracao)}} Criado em: {{trataData(tarefa?.dataCriacao)}}</p>
     </div>
 </div>
