@@ -28,11 +28,19 @@ export class TarefaComponent implements OnInit {
   }
   buscarComentarios():void{
     this.comentService.findAllByTarefa(this.tarefa?.id as number)
-    .subscribe((res)=> this.comentarios = res)
+    .subscribe((res)=> this.reodenarComentarios(res))
+  }
+  reodenarComentarios(comentarios: Comentario[]){
+
+    comentarios.forEach(() => {
+      this.comentarios.push(comentarios.pop() as Comentario)
+    })
+
   }
   inserirComentario(){
     this.comentService.cadastrar(this.tarefa?.id as number, Number(this.iduser), this.comentario )
-    .subscribe((res) => this.comentarios.unshift(res))
+    .subscribe((res) => this.comentarios.unshift(res), (err) => {}, ()=> this.comentario.conteudo = "")
+
   }
   excluir(){
     this.tarefaService.apagar(this.tarefa?.id)

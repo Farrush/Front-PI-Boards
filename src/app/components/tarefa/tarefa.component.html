@@ -11,10 +11,13 @@
         <section class="box-comentarios">
             <div class="comentar">
                 <input type="text" placeholder="Comentário" [(ngModel)]="comentario.conteudo"/>
-                <button mat-flat-button (click)="inserirComentario()">Comentar</button>
+                <button [disabled]="comentario.conteudo == ''" mat-flat-button (click)="inserirComentario()">Comentar</button>
             </div>
             <div class="comentarios">
-                <h4 *ngFor="let com of comentarios; track: com">{{com.criador?.nome}}: {{com.conteudo}}</h4>
+                <div class="comentario" *ngFor="let com of comentarios; track: com">
+                    <p class="nome-usuario">{{com.criador?.nome}}</p>
+                    <p class="conteudo">{{com.conteudo}}</p>
+                </div>
             </div>
         </section>
 
@@ -22,6 +25,6 @@
         <mat-icon (click)="this.close.emit()" class="btn-fechar">
             close
         </mat-icon>
-        <p class="datas">Última alteração: {{trataData(tarefa?.dataAlteracao)}} Criado em: {{trataData(tarefa?.dataCriacao)}}</p>
+        <p class="datas">Criado em: {{trataData(tarefa?.dataCriacao)}} Última alteração: {{trataData(tarefa?.dataAlteracao)}}</p>
     </div>
 </div>
