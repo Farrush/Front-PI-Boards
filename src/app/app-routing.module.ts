@@ -5,6 +5,7 @@ import { LoginComponent } from './pages/login/login.component';
 import { CadastroComponent } from './pages/cadastro/cadastro.component';
 import { EsqueceuComponent } from './pages/esqueceu/esqueceu.component';
 import { ListaProjetosComponent } from './pages/lista-projetos/lista-projetos.component';
+import { AreaPerfilComponent } from './pages/area-perfil/area-perfil.component';
 
 
 const routes: Routes = [
@@ -14,6 +15,7 @@ const routes: Routes = [
   { path: 'esqueceu', component: EsqueceuComponent},
   { path: 'projeto', component: ProjetoComponent},
   { path: 'projetos', component: ListaProjetosComponent},
+  { path: 'perfil', component: AreaPerfilComponent},
   { path: '', redirectTo: '/login', pathMatch: 'full' },
   //{ path: '**', redirectTo: '/login' }
 

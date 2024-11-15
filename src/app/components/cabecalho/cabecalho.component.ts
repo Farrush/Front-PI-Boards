@@ -22,4 +22,7 @@ export class CabecalhoComponent {
   emitNovoProjeto (){
     this.novoProjeto.emit()
   }
+  irPerfil(): void{
+    this.router.navigate(['/perfil'])
+  }
 }

@@ -21,6 +21,7 @@ import { FormTarefaComponent } from './components/form-tarefa/form-tarefa.compon
 import { ListaProjetosComponent } from './pages/lista-projetos/lista-projetos.component';
 import { CabecalhoComponent } from './components/cabecalho/cabecalho.component';
 import { FormProjetoComponent } from './components/form-projeto/form-projeto.component';
+import { AreaPerfilComponent } from './pages/area-perfil/area-perfil.component';
 
 @NgModule({
   declarations: [
@@ -33,7 +34,8 @@ import { FormProjetoComponent } from './components/form-projeto/form-projeto.com
     FormTarefaComponent,
     ListaProjetosComponent,
     CabecalhoComponent,
-    FormProjetoComponent
+    FormProjetoComponent,
+    AreaPerfilComponent
   ],
   imports: [
     BrowserModule,
