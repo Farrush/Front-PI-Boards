@@ -14,7 +14,7 @@
             <section class="input-box">
                 <input type="{{ isPasswordVisible ? 'text' : 'password' }}" [(ngModel)]="pass" id="pass" class="input-field" name="pass" autocomplete="off">
                 <label for="pass" class="label">Senha</label>
-                <i class="bx bx-lock-alt icon" id="show-password" (click)="togglePasswordVisibility()"></i>
+                <i class="bx icon" [ngClass]="isPasswordVisible?'bx-show':'bx-hide'" id="show-password" (click)="togglePasswordVisibility()"></i>
             </section>
             <section class="input-box">
                 <input type="submit" class="input-submit" value="Login" (click)="onSubmit()">

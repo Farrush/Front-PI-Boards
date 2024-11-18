@@ -20,13 +20,13 @@
             <section class="input-box">
                 <input [(ngModel)]="pass" type="{{ isPasswordVisible ? 'text' : 'password' }}" id="pass" class="input-field" name="pass" ngModel autocomplete="off">
                 <label for="pass" class="label">Password</label>
-                <i class="bx bx-lock-alt icon" id="show-password" (click)="togglePasswordVisibility()"></i>
+                <i class="bx icon" [ngClass]="isPasswordVisible? 'bx-show':'bx-hide'" id="show-password" (click)="togglePasswordVisibility()"></i>
 
             </section>
             <section class="input-box">
                 <input [(ngModel)]="confirmPass" type="{{ isPasswordVisible ? 'text' : 'password' }}" id="pass" class="input-field" name="pass" ngModel autocomplete="off">
                 <label for="confirm-pass" class="label">Confirm Password</label>
-                <i class="bx bx-lock-alt icon" id="show-password" (click)="togglePasswordVisibility()"></i>
+                <i class="bx icon" [ngClass]="isConfirmPasswordVisible? 'bx-show':'bx-hide'" id="show-password" (click)="togglePasswordVisibility()"></i>
             </section>
             <section class="input-box-button">
                 <input (click)="onSubmit()" type="submit" class="input-submit" value="Cadastrar">

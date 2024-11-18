@@ -19,7 +19,7 @@ export class CadastroComponent {
   }
   onSubmit() {
     if (this.isFormValid() && this.isPasswordEqual()) {
-      this.service.cadastrar({nome: this.user, email: this.email, senha: this.pass, dataCadastro:new Date().toISOString().split('.')[0]})
+      this.service.cadastrar({nome: this.user, email: this.email.toLowerCase(), senha: this.pass, dataCadastro:new Date().toISOString().split('.')[0]})
         .subscribe((res) => {
           this.router.navigate(['/login'])
         }, (err) => {
