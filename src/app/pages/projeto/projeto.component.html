@@ -6,8 +6,6 @@
                 {{projeto.titulo}}
             </h1>
             <div class="botoes">
-                <button mat-fab class="botao">Privado</button>
-                <button mat-fab class="botao">Pessoal</button>
                 <button mat-fab class="botao">Convite</button>
             </div>
         </div>
@@ -40,11 +38,12 @@
                         class="tarefa" 
                         cdkDrag 
                         [cdkDragData]="tarefa" (click)="abrirTarefa(tarefa)">
-                            <div class="barra-prioridade">
+                        <div class="fundo">
+                            <div [ngStyle]="{background: tarefa.tagPrioridade?.cor}" class="barra-prioridade">
                             </div>
                             <p class="objetivo">{{tarefa.objetivo}}</p>
                             <button *ngIf="tarefa.prazo != null" mat-fab extended class="btn-prazo">{{trataData(tarefa.prazo)}}</button>
-                        
+                        </div>
                     </div>
                     <div class="nova-tarefa">
                         <button (click)="abrirFormNovaTarefa(lista.id? lista.id : 0)" mat-fab extended>

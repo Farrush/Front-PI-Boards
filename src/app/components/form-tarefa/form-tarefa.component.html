@@ -2,7 +2,12 @@
     <div class="form-tarefa">
         <h1>Nova Tarefa</h1>
         <section class="prioridade input-box">
-            <label>Prioridade: </label><button mat-flat-button>Selecionar</button>
+            <label>Prioridade: </label>
+            <p [ngStyle]="{background: tagPrioridade.cor}" *ngIf="tagPrioridade != null">{{tagPrioridade.prioridade}}</p>
+            <button (click)="prioritiesVisible = true" mat-flat-button>
+                Selecionar
+            </button>                        
+            
         </section>
         <section class="input-box">
             <input type="text" placeholder="Objetivo" class="input-field" [(ngModel)]="objetivo">
@@ -17,4 +22,5 @@
             close
         </mat-icon>
     </div>
+    <app-prioridade (fechar)="prioritiesVisible = false" (prioridade)="setPrioridade($event)" *ngIf="prioritiesVisible"></app-prioridade>
 </div>

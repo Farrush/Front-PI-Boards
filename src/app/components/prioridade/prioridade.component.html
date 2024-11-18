@@ -1,0 +1,22 @@
+<div class="background-super-block">
+    <div class="prioridade-container">
+        <div class="form-prioridade">
+            <input placeholder="Nível de Prioridade" [(ngModel)]="prioridade.prioridade" class="nome"/>
+            <input type="color" [(ngModel)]="prioridade.cor" class="cor-input"/>
+            <button mat-flat-button>Criar</button>
+        </div>
+        <div class="prioridades">
+            <div (click)="select(p)" *ngFor="let p of prioridades; track p" class="prioridade">
+                <span class="cor" [ngStyle]="{background: p.cor}">
+
+                </span>
+                <h4>
+                    {{p.prioridade}}
+                </h4>
+            </div>
+        </div>
+        <mat-icon class="btn-fechar" (click)="this.fechar.emit()">
+            close
+        </mat-icon>
+    </div>
+</div>

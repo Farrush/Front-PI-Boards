@@ -16,7 +16,13 @@ export class FormTarefaComponent {
   prazo = ''
   objetivo = ''
   tagPrioridade: Prioridade | null = null
+  prioritiesVisible: boolean = false
+
+  setPrioridade(p: Prioridade){
+    this.tagPrioridade = p
+  }
   @Output("criarTarefa") criarTarefa = new EventEmitter<Tarefa | null>()
+
   cadastrarTarefa(){
     let novaTarefa: Tarefa = {
       objetivo: this.objetivo,
@@ -26,6 +32,7 @@ export class FormTarefaComponent {
       dataAlteracao: new Date().toISOString().split('.')[0],
       idLista: this.idLista as number
     }
+    
     if(this.objetivo != '')
       this.tarefaService.cadastrar(this.idLista as number, Number(localStorage.getItem('iduser')), novaTarefa)
       .subscribe(

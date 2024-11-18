@@ -15,15 +15,22 @@
         z-index: 11;
         position: fixed;
         background-color: #fff;
-        width: 50vw;
-        height: 50vh;
+        width: 60vw;
+        height: 70vh;
         border-radius: 12px;
         box-shadow: 0px 2px 8px #0002;
         padding: 32px 40px;
         text-align: center;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-evenly;
+        .mat-mdc-menu-content {
+            margin: 0;
+            /* padding: 8px 0; */
+            outline: 0;
+        }
         h1{
             font-size: 42px;
-            margin-bottom: 42px;
         }
         button{
             background-color: var(--azul);
@@ -49,7 +56,6 @@
             display: flex;
             align-items: center;
             gap: 16px;
-            margin: 32px 0;
             input{
                 padding: 4px 8px;
                 border-radius: 8px;
@@ -64,8 +70,7 @@
             
         }
         .btn-criar{
-            justify-self: center;
-            margin-top: 32px;
+            align-self: center;
         }
     }
 }

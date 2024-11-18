@@ -37,7 +37,6 @@ export class ProjetoComponent implements OnInit {
     if(this.idProjeto != undefined){
       this.buscarProjeto()
       this.buscarListas()
-      //this.buscarTarefas()
     }
     else{
       this.router.navigate(['/projetos'])
