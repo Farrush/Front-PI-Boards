@@ -3,6 +3,7 @@ import { Tarefa } from '../../entities/Tarefa';
 import { TarefaService } from '../../services/tarefa.service';
 import { ComentarioService } from '../../services/comentario.service';
 import { Comentario } from '../../entities/Comentario';
+import { Prioridade } from '../../entities/Prioridade';
 
 @Component({
   selector: 'app-tarefa',
@@ -13,13 +14,14 @@ export class TarefaComponent implements OnInit {
   @Input() tarefa: Tarefa | null = null
   @Output() close = new EventEmitter<void>();
   @Output() closeAndEmitId = new EventEmitter<number>();
+
   comentarios: Comentario[] = []
   comentario: Comentario= {
     conteudo: '',
     comentadoEm: new Date().toISOString().split('.')[0],
   }
   iduser = localStorage.getItem('iduser')
-
+  editting: boolean = false;
   constructor(private tarefaService: TarefaService, private comentService: ComentarioService){
 
   }
@@ -30,10 +32,13 @@ export class TarefaComponent implements OnInit {
     this.comentService.findAllByTarefa(this.tarefa?.id as number)
     .subscribe((res)=> this.reodenarComentarios(res))
   }
-  reodenarComentarios(comentarios: Comentario[]){
+  habilitarEdit(){
 
-    comentarios.forEach(() => {
-      this.comentarios.push(comentarios.pop() as Comentario)
+  }
+  reodenarComentarios(comentarios: Comentario[]){
+    this.comentarios = []
+    comentarios.forEach((comentario) => {
+      this.comentarios.unshift(comentario as Comentario)
     })
 
   }
@@ -41,6 +46,11 @@ export class TarefaComponent implements OnInit {
     this.comentService.cadastrar(this.tarefa?.id as number, Number(this.iduser), this.comentario )
     .subscribe((res) => this.comentarios.unshift(res), (err) => {}, ()=> this.comentario.conteudo = "")
 
+  }
+  exibirData(data: any){
+    let date = new Date(data)
+    let res = date.toLocaleDateString() + " " + date.toLocaleTimeString()
+    return res
   }
   excluir(){
     this.tarefaService.apagar(this.tarefa?.id)

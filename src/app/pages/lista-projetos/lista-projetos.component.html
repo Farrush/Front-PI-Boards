@@ -33,6 +33,6 @@
             </div>
         </div>
     </main>
-    <app-form-projeto (criarProjeto)="addProjetoALista($event)" *ngIf="showFormNewProject"></app-form-projeto>
-    <app-form-projeto (alterarProjeto)="alterarProjeto($event)" [proj]="projAlterando" [oldTitle]="projAlterando.titulo" *ngIf="projAlterando !== null"></app-form-projeto>
+    <app-form-projeto (criarProjeto)="addProjetoALista($event)" (close)="showFormNewProject = false" *ngIf="showFormNewProject"></app-form-projeto>
+    <app-form-projeto (alterarProjeto)="alterarProjeto($event)" (close)="projAlterando = null" [proj]="projAlterando" [oldTitle]="projAlterando.titulo" *ngIf="projAlterando !== null"></app-form-projeto>
 </div>

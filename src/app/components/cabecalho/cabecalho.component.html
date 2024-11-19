@@ -9,11 +9,11 @@
         </button>
     </div>
     <div class="botoes">
-        <button (click)="emitNovoProjeto()" *ngIf="currentUrl != '/projeto'" mat-fab extended class="botao">
+        <button (click)="emitNovoProjeto()" *ngIf="currentUrl == '/projetos'" mat-fab extended class="botao">
             Novo Projeto
             <mat-icon>add</mat-icon>
         </button>
-        <button mat-fab extended class="botao">
+        <button (click)="logoff()" mat-fab extended class="botao">
             Sair
             <mat-icon>logout</mat-icon>
         </button>

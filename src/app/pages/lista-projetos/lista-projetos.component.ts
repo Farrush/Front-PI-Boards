@@ -8,6 +8,7 @@ import { Router } from '@angular/router';
   templateUrl: './lista-projetos.component.html',
   styleUrl: './lista-projetos.component.scss'
 })
+
 export class ListaProjetosComponent implements OnInit{
   idUsuario = localStorage.getItem('iduser')
   projetos: Projeto[] = []
@@ -18,6 +19,9 @@ export class ListaProjetosComponent implements OnInit{
 
   }
   ngOnInit(): void {
+    if(this.idUsuario == null){
+      this.router.navigate(['/login'])
+    }
     this.buscarProjetosCriados()
     this.buscarProjetosParticipados()
   }

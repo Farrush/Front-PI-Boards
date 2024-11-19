@@ -1,6 +1,6 @@
 .background-block{
     z-index: 10;
-    position: absolute;
+    position: fixed;
     top: 0;
     left: 0;
     width: 100vw;
@@ -11,6 +11,7 @@
     align-items: center;
     font-family: 'roboto', sans-serif;
     overflow-x: hidden;
+
     .form-projeto{
         z-index: 11;
         display: flex;
@@ -32,12 +33,17 @@
             font-size: 20px;
             padding: 2px 4px;
         }
-        button{
-            background-color: var(--azul);
-            color: #fff;
-            font-size: 24px;
-            align-self: center;
-        } 
+        .btns{
+            display: flex;
+            gap: 24px;
+            justify-content: center;
+            button{
+                background-color: var(--azul);
+                color: #fff;
+                font-size: 20px;
+                align-self: center;
+            } 
+        }
 
     }
     @keyframes animacao-surgir {

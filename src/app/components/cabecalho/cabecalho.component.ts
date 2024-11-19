@@ -25,4 +25,8 @@ export class CabecalhoComponent {
   irPerfil(): void{
     this.router.navigate(['/perfil'])
   }
+  logoff(){
+    localStorage.removeItem('iduser')
+    this.router.navigate(['/login'])
+  }
 }

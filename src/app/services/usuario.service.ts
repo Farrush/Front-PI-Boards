@@ -20,6 +20,10 @@ export class UsuarioService {
     const url = `${this.url}/${id}`
     return this.http.get<Usuario>(url);
   }
+  findAllByEmail(email: string): Observable<Usuario[]>{
+    const url = `${this.url}/email/${email}`
+    return this.http.get<Usuario[]>(url);
+  }
   login(usuario: Usuario): Observable<Usuario>{
     const url = `${this.url}/login`
     return this.http.post<Usuario>(url, usuario)

@@ -16,6 +16,7 @@ export class FormProjetoComponent {
   @Input() oldTitle: string = ''
   titulo = ''
   @Output("criarProjeto") criarProjeto = new EventEmitter<Projeto | null>()
+  @Output("close") close = new EventEmitter<void>()
   criar(): void{
     this.service.cadastrar(localStorage.getItem('iduser') as unknown as number, {
       titulo: this.titulo.trim(), 

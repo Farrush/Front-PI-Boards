@@ -1,12 +1,29 @@
 <div class="background-block">
-    <div class="card-tarefa">
+    <div class="card-tarefa" [ngStyle]="{borderColor: tarefa?.tagPrioridade?.cor}">
+        <div class="linha">
+            <h2>Prioridade: {{tarefa?.tagPrioridade?.prioridade != undefined? tarefa?.tagPrioridade?.prioridade : "Não Definida"}}</h2>
+
+        </div>
         <div class="linha">
             <h2>{{tarefa?.objetivo}}</h2>
+
         </div>
         <div class="linha">
-            <h2>Prazo: {{tarefa?.prazo != null? trataData(tarefa?.prazo) : 'Indefinido'}}</h2>
+            <h2>Prazo: <span >{{tarefa?.prazo != null? trataData(tarefa?.prazo) : 'Indefinido'}}</span></h2>
+
         </div>
-        <button mat-flat-button class="btn-excluir" (click)="excluir()">Excluir</button>
+        <button mat-flat-button class="btn excluir" (click)="excluir()">
+            <mat-icon>
+                delete
+            </mat-icon>
+            Excluir
+        </button>
+        <button mat-flat-button class="btn editar" (click)="habilitarEdit()">
+            <mat-icon>
+                edit
+            </mat-icon>
+            Editar
+        </button>
 
         <section class="box-comentarios">
             <div class="comentar">
@@ -15,7 +32,7 @@
             </div>
             <div class="comentarios">
                 <div class="comentario" *ngFor="let com of comentarios; track: com">
-                    <p class="nome-usuario">{{com.criador?.nome}}</p>
+                    <p class="nome-usuario">{{com.criador?.nome}} <span class="data">{{exibirData(com.comentadoEm)}}</span></p>
                     <p class="conteudo">{{com.conteudo}}</p>
                 </div>
             </div>

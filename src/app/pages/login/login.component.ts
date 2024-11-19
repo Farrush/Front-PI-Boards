@@ -16,8 +16,8 @@ export class LoginComponent implements OnInit{
 
   }
   ngOnInit(): void {
-    if(localStorage.getItem('iduser') !== undefined&&null)
-
+    // Caso vá para a tela de login e já tenha um usuário logado, vai direto para a página de projetos
+    if(localStorage.getItem('iduser') !== null)
       this.router.navigate(['/projetos'])
   }
   onSubmit() {
