@@ -10,6 +10,7 @@ import { Tarefa } from '../../entities/Tarefa';
 })
 export class FormTarefaComponent implements OnInit{
   tarefaSnapshot: Tarefa | null = null;
+  @Input() idProjeto = 0;
   @Input() idLista: number = 0
   @Input() editando = false
   @Input() tarefa: Tarefa = {

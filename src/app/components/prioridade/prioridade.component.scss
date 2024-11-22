@@ -11,7 +11,7 @@
         font-family: 'roboto', sans-serif;
         background-color: rgba(255, 255, 255, 0.974);
         border: 1px solid #0003;
-        border-radius: 8px;
+        border-radius: 16px;
         padding: 24px;
         position: absolute;
         right: 300px;
@@ -54,20 +54,30 @@
             display: flex;
             gap: 12px;
             flex-direction: column;
+            height: 26vh;
             overflow-y: auto;
             padding: 4px;
             width: 100%;
             .prioridade{
-                background-color: #fff;
+                position: relative;
                 width: 100%;
-                display: flex;
-                flex-direction: column;
-                gap: 4px;
-                border-radius: 8px;
-                border: 1px solid #0003;
                 cursor: pointer;
-                padding: 4px;
-                text-align: left;
+                .btn-delete{
+                    position: absolute;
+                    top: 0;
+                    right: 0;
+                    color: red;
+                }
+                .inner-prioridade{
+                    border-radius: 8px;
+                    border: 1px solid #0003;
+                    padding: 4px;
+                    text-align: left;
+                    background-color: #fff;
+                    display: flex;
+                    flex-direction: column;
+                    gap: 4px;
+                }
                 &:hover{
                     scale: 1.01;
                 }

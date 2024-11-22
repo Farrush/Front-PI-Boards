@@ -23,5 +23,5 @@
             close
         </mat-icon>
     </div>
-    <app-prioridade (fechar)="prioritiesVisible = false" (prioridade)="setPrioridade($event)" *ngIf="prioritiesVisible"></app-prioridade>
+    <app-prioridade [idProjeto]="idProjeto" (fechar)="prioritiesVisible = false" (prioridade)="setPrioridade($event)" *ngIf="prioritiesVisible"></app-prioridade>
 </div>

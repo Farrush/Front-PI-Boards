@@ -1,4 +1,4 @@
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Router } from '@angular/router';
 import { PrioridadeService } from '../../services/prioridade.service';
 import { Prioridade } from '../../entities/Prioridade';
@@ -9,7 +9,7 @@ import { Prioridade } from '../../entities/Prioridade';
   styleUrl: './prioridade.component.scss'
 })
 export class PrioridadeComponent implements OnInit{
-  idProjeto = 0
+  @Input() idProjeto = 0;
   prioridades: Prioridade[] = []
   prioridade: Prioridade = {
     cor: '',
@@ -30,5 +30,34 @@ export class PrioridadeComponent implements OnInit{
   select(prioridade: Prioridade){
     this.selecionarPrioridade.emit(prioridade)
     this.fechar.emit()
+  }
+  adicionarPrioridade(): void{
+    this.service.cadastrar(this.idProjeto, this.prioridade)
+      .subscribe((res)=> {
+        this.prioridades.push(res)
+        this.zerarPrioridade()
+      },
+      (err)=> {
+        this.zerarPrioridade()
+        alert("Falha ao adicionar prioridade")
+
+      }
+    )
+  }
+  apagarPrioridade(prioridade: Prioridade){
+    this.service.apagar(prioridade.id)
+      .subscribe((res)=>{
+        alert("Excluído")
+        this.prioridades = this.prioridades.filter(p => p.id != prioridade.id)
+      },
+      (err)=>{
+        alert("Falha ao apagar prioridade")
+      })
+  }
+  zerarPrioridade():void {
+    this.prioridade = {
+      cor: '',
+      prioridade: ''
+    }
   }
 }

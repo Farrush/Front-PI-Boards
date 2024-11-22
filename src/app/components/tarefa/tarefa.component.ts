@@ -11,6 +11,7 @@ import { Prioridade } from '../../entities/Prioridade';
   styleUrl: './tarefa.component.scss'
 })
 export class TarefaComponent implements OnInit {
+  @Input() idProjeto = 0;
   @Input() tarefa: Tarefa | null = null
   @Output() close = new EventEmitter<void>();
   @Output() closeAndEmitId = new EventEmitter<number>();

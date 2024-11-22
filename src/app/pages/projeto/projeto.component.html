@@ -62,6 +62,6 @@
             
         </div>
     </main>
-    <app-tarefa (tarefaEditada)="carregarTarefaAlterada($event)" [tarefa]="tarefaSelec" *ngIf="tarefaSelec !== null" (closeAndEmitId)="apagarTarefa($event)" (close)="tarefaSelec = null"></app-tarefa>
-    <app-form-tarefa  (criarTarefa)="fecharFormTarefa($event)" (close)="idLista = 0" *ngIf="idLista > 0" [idLista]="idLista"></app-form-tarefa>
+    <app-tarefa [idProjeto]="idProjeto" (tarefaEditada)="carregarTarefaAlterada($event)" [tarefa]="tarefaSelec" *ngIf="tarefaSelec !== null" (closeAndEmitId)="apagarTarefa($event)" (close)="tarefaSelec = null"></app-tarefa>
+    <app-form-tarefa [idProjeto]="idProjeto"  (criarTarefa)="fecharFormTarefa($event)" (close)="idLista = 0" *ngIf="idLista > 0" [idLista]="idLista"></app-form-tarefa>
 </div>
