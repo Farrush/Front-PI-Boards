@@ -9,7 +9,7 @@
 
         </div>
         <div class="linha">
-            <h2>Prazo: <span >{{tarefa?.prazo != null? trataData(tarefa?.prazo) : 'Indefinido'}}</span></h2>
+            <h2>Prazo: <span >{{tarefa?.prazo != null? trataData(tarefa?.prazo!) : 'Indefinido'}}</span></h2>
 
         </div>
         <button mat-flat-button class="btn excluir" (click)="excluir()">
@@ -42,6 +42,7 @@
         <mat-icon (click)="this.close.emit()" class="btn-fechar">
             close
         </mat-icon>
-        <p class="datas">Criado em: {{trataData(tarefa?.dataCriacao)}} Última alteração: {{trataData(tarefa?.dataAlteracao)}}</p>
+        <p class="datas">Criado em: {{trataData(tarefa?.dataCriacao!)}} Última alteração: {{trataData(tarefa?.dataAlteracao!)}}</p>
+        <app-form-tarefa *ngIf="editando" (close)="fecharEdit($event)" [editando]="true" (editarTarefa)="getTarefaEditada($event)" [tarefa]="tarefa!"></app-form-tarefa>
     </div>
 </div>

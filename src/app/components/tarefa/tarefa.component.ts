@@ -14,11 +14,14 @@ export class TarefaComponent implements OnInit {
   @Input() tarefa: Tarefa | null = null
   @Output() close = new EventEmitter<void>();
   @Output() closeAndEmitId = new EventEmitter<number>();
+  @Output("tarefaEditada") edit = new EventEmitter<Tarefa>()
+
+  editando: boolean = false
 
   comentarios: Comentario[] = []
   comentario: Comentario= {
     conteudo: '',
-    comentadoEm: new Date().toISOString().split('.')[0],
+    comentadoEm: '',
   }
   iduser = localStorage.getItem('iduser')
   editting: boolean = false;
@@ -33,7 +36,14 @@ export class TarefaComponent implements OnInit {
     .subscribe((res)=> this.reodenarComentarios(res))
   }
   habilitarEdit(){
-
+    this.editando = true
+  }
+  fecharEdit(tarefaAntiga: Tarefa | void){
+    if(tarefaAntiga){
+      this.tarefa = tarefaAntiga as Tarefa
+      this.edit.emit(tarefaAntiga as Tarefa)
+    }
+    this.editando = false
   }
   reodenarComentarios(comentarios: Comentario[]){
     this.comentarios = []
@@ -43,7 +53,7 @@ export class TarefaComponent implements OnInit {
 
   }
   inserirComentario(){
-    this.comentService.cadastrar(this.tarefa?.id as number, Number(this.iduser), this.comentario )
+    this.comentService.cadastrar(this.tarefa?.id as number, Number(this.iduser), {...this.comentario, comentadoEm: new Date().toISOString().split('.')[0]} )
     .subscribe((res) => this.comentarios.unshift(res), (err) => {}, ()=> this.comentario.conteudo = "")
 
   }
@@ -58,6 +68,17 @@ export class TarefaComponent implements OnInit {
   (err) => alert("Falha ao apagar tarefa."))
   }
   trataData(data: any): string{
-    return new Date(data).toLocaleDateString()
+    let date = new Date(data as string)
+    let dia = date.getUTCDate()
+    let mes = date.getMonth()
+    let ano = date.getFullYear()
+    return `${dia}/${mes+1}/${ano}`
+ 
   }
+
+  getTarefaEditada(tarefa: Tarefa){
+    this.tarefa = tarefa
+    this.edit.emit(tarefa)
+  }
+  
 }

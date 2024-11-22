@@ -104,7 +104,12 @@ export class ProjetoComponent implements OnInit {
     this.idLista = 0
   }
   trataData(data: any): string{
-    return new Date(data).toLocaleDateString()
+    let date = new Date(data as string)
+    let dia = date.getUTCDate()
+    let mes = date.getMonth()
+    let ano = date.getFullYear()
+    return `${dia}/${mes+1}/${ano}`
+ 
   }
   abrirTarefa(tarefa: Tarefa){
     this.tarefaSelec = tarefa
@@ -114,4 +119,12 @@ export class ProjetoComponent implements OnInit {
     this.tarefas.set(this.tarefaSelec?.idLista as number, listaT?.filter(t => t.id !== id) as Tarefa[])
     this.tarefaSelec = null
   }
+  carregarTarefaAlterada(tarefa: Tarefa){
+    this.tarefas.set(tarefa.idLista as number, (this.tarefas.get(tarefa.idLista as number) as Tarefa[]).map((t)=> {
+      if(t.id == tarefa.id)
+        return tarefa
+      return t
+    }))
+  }
+
 }
