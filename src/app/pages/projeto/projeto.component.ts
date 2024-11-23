@@ -17,7 +17,7 @@ import { Router } from '@angular/router';
   styleUrl: './projeto.component.scss'
 })
 export class ProjetoComponent implements OnInit {
-
+  convidando: boolean = false
   idProjeto = 0
   idLista: number = 0
   listas: Lista[] = []

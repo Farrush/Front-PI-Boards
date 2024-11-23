@@ -12,11 +12,12 @@ export class PrioridadeComponent implements OnInit{
   @Input() idProjeto = 0;
   prioridades: Prioridade[] = []
   prioridade: Prioridade = {
-    cor: '',
+    cor: '#00ffb8',
     prioridade: ''
   }
   @Output("fechar") fechar = new EventEmitter<void>()
   @Output("prioridade") selecionarPrioridade = new EventEmitter<Prioridade>()
+  @Output("removido") removido = new EventEmitter<Prioridade>()
   constructor(private router: Router, private service: PrioridadeService){
   }
   ngOnInit(): void {
@@ -49,6 +50,7 @@ export class PrioridadeComponent implements OnInit{
       .subscribe((res)=>{
         alert("Excluído")
         this.prioridades = this.prioridades.filter(p => p.id != prioridade.id)
+        this.removido.emit(prioridade)
       },
       (err)=>{
         alert("Falha ao apagar prioridade")

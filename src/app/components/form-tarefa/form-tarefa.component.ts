@@ -98,4 +98,11 @@ export class FormTarefaComponent implements OnInit{
     
     this.close.emit()
   }
+  removerPrioridade(p: Prioridade){
+    if(this.tarefa.tagPrioridade?.id == p.id){
+      this.tarefa.tagPrioridade = null;
+
+      (this.tarefaSnapshot as Tarefa).tagPrioridade  = null
+    }
+  }
 }

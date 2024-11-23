@@ -23,6 +23,7 @@ import { CabecalhoComponent } from './components/cabecalho/cabecalho.component';
 import { FormProjetoComponent } from './components/form-projeto/form-projeto.component';
 import { AreaPerfilComponent } from './pages/area-perfil/area-perfil.component';
 import { PrioridadeComponent } from './components/prioridade/prioridade.component';
+import { InviterComponent } from './components/inviter/inviter.component';
 
 @NgModule({
   declarations: [
@@ -37,7 +38,8 @@ import { PrioridadeComponent } from './components/prioridade/prioridade.componen
     CabecalhoComponent,
     FormProjetoComponent,
     AreaPerfilComponent,
-    PrioridadeComponent
+    PrioridadeComponent,
+    InviterComponent
   ],
   imports: [
     BrowserModule,

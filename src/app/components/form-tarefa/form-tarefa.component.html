@@ -6,7 +6,10 @@
             <p [ngStyle]="{background: tarefa.tagPrioridade.cor}" *ngIf="tarefa.tagPrioridade != null">{{tarefa.tagPrioridade.prioridade}}</p>
             <button (click)="prioritiesVisible = true" mat-flat-button>
                 Selecionar
-            </button>                        
+            </button>  
+            <button (click)="tarefa.tagPrioridade = null" mat-flat-button>
+                Remover
+            </button>                      
             
         </section>
         <section class="input-box">
@@ -23,5 +26,5 @@
             close
         </mat-icon>
     </div>
-    <app-prioridade [idProjeto]="idProjeto" (fechar)="prioritiesVisible = false" (prioridade)="setPrioridade($event)" *ngIf="prioritiesVisible"></app-prioridade>
+    <app-prioridade (removido)="removerPrioridade($event)" [idProjeto]="idProjeto" (fechar)="prioritiesVisible = false" (prioridade)="setPrioridade($event)" *ngIf="prioritiesVisible"></app-prioridade>
 </div>

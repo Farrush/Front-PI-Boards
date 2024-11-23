@@ -6,7 +6,7 @@
                 {{projeto.titulo}}
             </h1>
             <div class="botoes">
-                <button mat-fab class="botao">Convite</button>
+                <button mat-fab class="botao" (click)="convidando = true">Convite</button>
             </div>
         </div>
         <div class="board" cdkDropListGroup>
@@ -62,6 +62,7 @@
             
         </div>
     </main>
+    <app-inviter [idProjeto]="idProjeto" *ngIf="convidando" (fechar)="convidando = false"></app-inviter>
     <app-tarefa [idProjeto]="idProjeto" (tarefaEditada)="carregarTarefaAlterada($event)" [tarefa]="tarefaSelec" *ngIf="tarefaSelec !== null" (closeAndEmitId)="apagarTarefa($event)" (close)="tarefaSelec = null"></app-tarefa>
     <app-form-tarefa [idProjeto]="idProjeto"  (criarTarefa)="fecharFormTarefa($event)" (close)="idLista = 0" *ngIf="idLista > 0" [idLista]="idLista"></app-form-tarefa>
 </div>
