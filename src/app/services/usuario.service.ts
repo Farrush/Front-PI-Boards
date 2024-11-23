@@ -40,4 +40,8 @@ export class UsuarioService {
     const url = `${this.url}/${id}`
     return this.http.delete<void>(url);
   }
+  atualizarSenha(usuario:Usuario): Observable<Usuario>{
+    const url=`${this.url}/${usuario.id}/senha`
+    return this.http.put<Usuario>(url,usuario.senha)
+  }
 }
