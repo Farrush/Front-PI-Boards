@@ -23,7 +23,7 @@
             padding: 5px;
             font-size: 1.5vw;
 
-            section{
+            section.input-box{
                 font-family: "roboto", sans-serif;
                 font-weight: 300;
                 font-size: 1.3vw;
@@ -31,7 +31,8 @@
                 word-wrap: break-word;
                 padding: 0.5rem;
                 margin: 10px;
-                
+                display: flex;
+                align-items: center;
                 .input-field {
                     height: 45px;
                     font-size: 16px;

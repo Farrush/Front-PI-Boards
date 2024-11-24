@@ -8,6 +8,7 @@ import { Router } from '@angular/router';
   styleUrl: './area-perfil.component.scss'
 })
 export class AreaPerfilComponent implements OnInit {
+  alterandoSenha: boolean = false
   pass: string = '';
   ID = localStorage.getItem('iduser')
   usuario: Usuario | null = null
@@ -26,17 +27,21 @@ export class AreaPerfilComponent implements OnInit {
     return (this.pass != '')
   }
   onSubmit(): void {
+    const usuarioAtualizado: Usuario = {
+      ...this.usuario!,
+      senha: this.pass
+    };
     if (this.isFormValid()) {
-      this.userService.atualizarSenha({
-        senha: this.pass,
-        email: ''
-      }).subscribe(
+      this.userService.atualizar(usuarioAtualizado).subscribe(
         (res) => {
           alert("Senha alterada com sucesso!");
+          localStorage.removeItem('iduser')
           this.router.navigate(['/login']);
         },
         (err) => {
           console.error('Erro ao alterar a senha:', err);
+          this.alterandoSenha = false
+          this.pass = ''
           alert('Erro ao alterar a senha.');
         }
       );
